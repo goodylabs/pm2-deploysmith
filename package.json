@@ -1,0 +1,15 @@
+{
+  "bin": {
+    "pm2-deploysmith": "./bin/index.mjs"
+  },
+  "dependencies": {
+    "inquirer": "^9.2.10"
+  },
+  "description": "CLI tool to generate PM2 post-deploy command using symlinks to get zero-downtime deployments",
+  "name": "pm2-deploysmith",
+  "scripts": {
+    "start": "node ./bin/index.mjs"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}

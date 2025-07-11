@@ -7,6 +7,9 @@
     "inquirer": "^9.2.10"
   },
   "description": "CLI tool to generate PM2 post-deploy command using symlinks to get zero-downtime deployments",
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  },
   "keywords": [
     "pm2",
     "deploy",
@@ -17,7 +20,8 @@
   "license": "MIT",
   "name": "pm2-deploysmith",
   "scripts": {
-    "start": "node ./bin/index.mjs"
+    "start": "node ./bin/index.mjs",
+    "test": "vitest run"
   },
   "type": "module",
   "version": "1.0.0"

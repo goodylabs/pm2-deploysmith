@@ -5,6 +5,12 @@ CLI tool to generate a PM2 `post-deploy` command using the standard `releases/` 
 Built for Node.js environments using `pnpm`, `pm2`, and optionally `nvm`.
 
 ![CI](https://github.com/goodylabs/pm2-deploysmith/actions/workflows/ci.yml/badge.svg)
+[![npm version](https://img.shields.io/npm/v/pm2-deploysmith.svg)](https://www.npmjs.com/package/pm2-deploysmith)
+[![npm downloads](https://img.shields.io/npm/dm/pm2-deploysmith.svg)](https://www.npmjs.com/package/pm2-deploysmith)
+![license](https://img.shields.io/npm/l/pm2-deploysmith.svg)
+![node](https://img.shields.io/node/v/pm2-deploysmith)
+![built with pnpm](https://img.shields.io/badge/built%20with-pnpm-ff69b4.svg)
+[![open issues](https://img.shields.io/github/issues/goodylabs/pm2-deploysmith.svg)](https://github.com/goodylabs/pm2-deploysmith/issues)
 
 ---
 

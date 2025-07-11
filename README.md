@@ -4,6 +4,8 @@ CLI tool to generate a PM2 `post-deploy` command using the standard `releases/` 
 
 Built for Node.js environments using `pnpm`, `pm2`, and optionally `nvm`.
 
+![CI](https://github.com/goodylabs/pm2-deploysmith/actions/workflows/ci.yml/badge.svg)
+
 ---
 
 ## 🚀 What It Does

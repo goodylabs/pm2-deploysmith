@@ -55,11 +55,15 @@ pm2-deploysmith --systemUser ubuntu --projectSubDir my-app --environment product
 ```
 
 Additional optional flags:
+
 --numOfKeptReleases - how many old releases to keep (default: 4)
+
 --skipSourceNvm - if you don't want to run `source ~/.nvm/nvm.sh` first
+
 --addSourceProfile - if you want to run `source ~/.profile` first
 
-Example:
+
+### Example:
 
 ```bash
 pm2-deploysmith \
@@ -72,6 +76,7 @@ pm2-deploysmith \
 ```
 
 🧪 Output
+
 You wiil get a full post-deploy command like this:
 
 ```bash

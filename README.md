@@ -11,6 +11,7 @@ Built for Node.js environments using `pnpm`, `pm2`, and optionally `nvm`.
 ![node](https://img.shields.io/node/v/pm2-deploysmith)
 ![built with pnpm](https://img.shields.io/badge/built%20with-pnpm-ff69b4.svg)
 [![open issues](https://img.shields.io/github/issues/goodylabs/pm2-deploysmith.svg)](https://github.com/goodylabs/pm2-deploysmith/issues)
+[![codecov](https://codecov.io/gh/goodylabs/pm2-deploysmith/branch/main/graph/badge.svg)](https://codecov.io/gh/goodylabs/pm2-deploysmith)
 
 ---
 

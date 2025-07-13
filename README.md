@@ -121,5 +121,18 @@ module.exports = {
 }
 ```
 
+## Upgrades and versioning
+
+```
+pnpm version patch  # or minor or major
+git push --follow-tags
+```
+
+## Manual publishing
+
+```
+pnpm publish --access public
+```
+
 📄 License
 MIT © 2025 goodylabs

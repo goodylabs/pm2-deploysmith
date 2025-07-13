@@ -57,6 +57,18 @@ describe("generatePm2PostDeployLine", () => {
 
   });
 
+  describe("without projectSubDir", () => {
+
+    it("generates a command with correct base path without projectSubDir", () => {
+      const cmd = generatePm2PostDeployLine({
+        systemUser: "ubuntu",
+        environment: "production",
+      });
+
+      expect(cmd).toContain("/home/ubuntu/releases");
+    });
+  });
+
   it("supports --skipSourceNvm", () => {
     const cmd = generatePm2PostDeployLine({
       systemUser: "root",

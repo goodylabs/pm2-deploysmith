@@ -38,6 +38,8 @@ pnpm add -g pm2-deploysmith
 
 ## 🏃 Usage
 
+![pm2-deploysmith demo](./docs/pm2-deploysmith-demo.gif)
+
 Interactive mode:
 
 ```bash

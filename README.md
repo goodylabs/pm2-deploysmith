@@ -123,14 +123,14 @@ module.exports = {
 
 ## Upgrades and versioning
 
-```
+```bash
 pnpm version patch  # or minor or major
 git push --follow-tags
 ```
 
 ## Manual publishing
 
-```
+```bash
 pnpm publish --access public
 ```
 

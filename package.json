@@ -33,6 +33,7 @@
   "license": "MIT",
   "name": "pm2-deploysmith",
   "scripts": {
+    "build": "echo 'NOOP here'",
     "e2e": "vitest run -c /dev/null --dir ./test-e2e",
     "e2e:coverage": "c8 vitest run -c /dev/null --dir ./test-e2e --coverage",
     "lint": "eslint . --ext .js,.mjs",

@@ -3,7 +3,7 @@ import { generatePm2PostDeployLine } from "../lib/generator.mjs";
 
 describe("generatePm2PostDeployLine", () => {
 
-  describe("default params", () => {
+  describe("default params with pnpm", () => {
 
     describe("for production", () => {
 
@@ -54,6 +54,63 @@ describe("generatePm2PostDeployLine", () => {
     });
 
   });
+
+  describe("default params with yarn", () => {
+
+    describe("for production", () => {
+
+      const expectedEnvironment = "production";
+      const expectedPackageManager = "yarn";
+
+      it("generates a command with correct base path", () => {
+        const cmd = generatePm2PostDeployLine({
+          systemUser: "ubuntu",
+          projectSubDir: "my-app",
+          environment: expectedEnvironment,
+          packageManager: expectedPackageManager
+        });
+
+        expect(cmd).toContain("/home/ubuntu/my-app/releases");
+        expect(cmd).toContain(`pm2 reload ecosystem.config.js --env ${expectedEnvironment} --cwd `);
+        expect(cmd).toContain("BUILD_TIMESTAMP");
+        expect(cmd).toContain(`&& ${expectedPackageManager} build:${expectedEnvironment} `);
+
+        expect(cmd).toContain("&& mkdir -p ");
+        expect(cmd).toContain("/releases/build-$BUILD_TIMESTAMP/ ");
+
+        expect(cmd).toContain("&& cp -a ");
+        expect(cmd).toContain("&& nvm install ");
+        expect(cmd).toContain("&& nvm use ");
+        expect(cmd).toContain(`&& npm install -g ${expectedPackageManager} `);
+        expect(cmd).toContain("&& npm install -g pm2");
+        expect(cmd).toContain(`&& ${expectedPackageManager} install `);
+      });
+
+    });
+
+    describe("for staging", () => {
+
+      const expectedEnvironment = "staging";
+      const expectedPackageManager = "yarn";
+
+      it("generates a command with correct base path", () => {
+        const cmd = generatePm2PostDeployLine({
+          systemUser: "ubuntu",
+          projectSubDir: "my-app",
+          environment: expectedEnvironment,
+          packageManager: expectedPackageManager
+        });
+
+        expect(cmd).toContain("/home/ubuntu/my-app/releases");
+        expect(cmd).toContain(`pm2 reload ecosystem.config.js --env ${expectedEnvironment} --cwd `);
+        expect(cmd).toContain("BUILD_TIMESTAMP");
+
+        expect(cmd).toContain(`&& ${expectedPackageManager} build:${expectedEnvironment} `);
+      });
+    });
+
+  });
+
 
   describe("with env option - same as environment option", () => {
 
@@ -148,6 +205,61 @@ describe("generatePm2PostDeployLine", () => {
       });
 
       expect(cmd).toContain("tail -n +4 | xargs rm -rf");
+    });
+  });
+
+  describe("with prependBeforeBuild switch", () => {
+
+    it("supports --prependBeforeBuild", () => {
+      const cmd = generatePm2PostDeployLine({
+        systemUser: "root",
+        projectSubDir: "demo",
+        environment: "staging",
+        numOfKeptReleases: 8,
+        prependBeforeBuild: "echo 'foobar'"
+      });
+
+      expect(cmd).toContain("&& echo 'foobar' && pnpm build:");
+    });
+
+    it("does not contain numOfKeptReleases by default - uses a default value", () => {
+      const cmd = generatePm2PostDeployLine({
+        systemUser: "root",
+        projectSubDir: "demo",
+        environment: "staging"
+      });
+
+      expect(cmd).toContain("tail -n +4 | xargs rm -rf");
+    });
+  });
+
+  describe("with buildEnvironment switch", () => {
+
+    const expectedBuildEnvironment = "preprod"
+
+    it("supports --buildEnvironment", () => {
+      const cmd = generatePm2PostDeployLine({
+        systemUser: "root",
+        projectSubDir: "demo",
+        environment: "staging",
+        numOfKeptReleases: 8,
+        buildEnvironment: expectedBuildEnvironment
+      });
+
+      expect(cmd).toContain(`&& pnpm build:${expectedBuildEnvironment}`);
+    });
+
+    it("does not contain buildEnvironment by default - uses a default value", () => {
+
+      const expectedEnvironment = "staging"
+
+      const cmd = generatePm2PostDeployLine({
+        systemUser: "root",
+        projectSubDir: "demo",
+        environment: expectedEnvironment
+      });
+
+      expect(cmd).toContain(`&& pnpm build:${expectedEnvironment}`);
     });
   });
 

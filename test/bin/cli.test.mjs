@@ -35,7 +35,7 @@ describe('cli', () => {
   it('shows version and exits', async () => {
     const log = vi.fn();
     const exit = vi.fn();
-    await run(['node', 'script', '--version'], exit, log);
+    await run(['node', 'bin/index.mjs', '--version'], exit, log);
     expect(log).toHaveBeenCalledWith('1.2.3');
     expect(exit).toHaveBeenCalledWith(0);
   });
@@ -43,7 +43,7 @@ describe('cli', () => {
   it('asks questions if not passed in CLI args', async () => {
     const log = vi.fn();
     const exit = vi.fn();
-    await run(['node', 'script'], exit, log);
+    await run(['node', 'bin/index.mjs'], exit, log);
     expect(log.mock.calls[1][0]).toContain('mocked-deploy-line');
   });
 
@@ -51,7 +51,7 @@ describe('cli', () => {
     const log = vi.fn();
     const exit = vi.fn();
     await run([
-      'node', 'script',
+      'node', 'bin/index.mjs',
       '--systemUser', 'ubuntu',
       '--projectSubDir', 'my-app',
       '--environment', 'production'

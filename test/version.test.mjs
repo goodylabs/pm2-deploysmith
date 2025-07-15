@@ -1,8 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { showVersion } from '../lib/version.mjs';
 
-import * as fs from 'node:fs/promises';
-
 vi.mock('node:fs/promises', async () => {
   const actual = await vi.importActual('node:fs/promises');
   return {

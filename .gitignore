@@ -142,4 +142,4 @@ vite.config.ts.timestamp-*
 
 # Custom tests per project
 
-test/*.custom.test.mjs
+test/**/*.custom.test.mjs

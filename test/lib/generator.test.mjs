@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { generatePm2PostDeployLine } from "../lib/generator.mjs";
+import { generatePm2PostDeployLine } from "../../lib/generator.mjs";
 
 describe("generatePm2PostDeployLine", () => {
 
